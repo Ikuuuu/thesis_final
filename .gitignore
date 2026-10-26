@@ -25,3 +25,8 @@ data/raw_v1_0/
 data/interim/
 results/rerun/
 checkpoints/rerun/
+
+# 원본 법령 PDF 는 저장소에 넣지 않음 (data/pdf/README.md 참고)
+data/pdf/*.pdf
+data/pdf/*.ggpdf
+*.ggpdf

@@ -59,7 +59,7 @@ thesis_final/
 ├── scripts/01~06_*.py       # 단계별 실행 스크립트
 ├── ontology/schema.json
 ├── data/
-│   ├── pdf/                 # 원본 법령 PDF 41건
+│   ├── pdf/                 # 원본 법령 PDF 자리 (저장소 미포함 — data/pdf/README.md 참고)
 │   ├── v1.0/                # 논문 실험에 쓴 고정 데이터셋
 │   ├── v1.1/                # 개선 데이터셋 (파이프라인으로 재생성 가능)
 │   └── eval/semantic_eval.json
@@ -98,6 +98,8 @@ python scripts/06_inference.py --checkpoint checkpoints/demo_seed42/Ours_s42.npz
 ```
 
 `--quick` 결과는 5 epoch만 학습한 동작 확인용이라 성능 수치에 의미가 없습니다.
+
+`--quick`·`--data-only`·`01_parse_pdfs.py`는 원본 PDF가 필요합니다. 저장소에는 PDF를 넣지 않았으니 `data/pdf/README.md` 목록대로 국가법령정보센터에서 내려받아 두세요. 논문 데이터셋(`data/v1.0`)과 실험 원자료는 저장소에 들어 있어 `--report`, `04~06` 단계는 PDF 없이 바로 실행됩니다.
 
 ## 5. 주요 결과 (국방 법령 KG v1.0, 5 seed 평균)
 

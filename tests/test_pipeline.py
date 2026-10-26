@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -16,6 +17,8 @@ from kgekit.train import config_for, train_model  # noqa: E402
 from lawparser.pdf_parser import parse_directory  # noqa: E402
 
 
+@pytest.mark.skipif(not list((ROOT / "data" / "pdf").glob("*.pdf")),
+                    reason="data/pdf 에 원본 PDF 가 없음 (data/pdf/README.md 참고)")
 def test_v1_0_dataset_reproducible_from_pdf():
     """PDF → (v1.0 파서·규칙) → 트리플 집합이 고정된 논문 데이터셋(data/v1.0)과 같다."""
     docs = parse_directory(ROOT / "data" / "pdf", legacy=True)

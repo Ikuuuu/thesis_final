@@ -1,0 +1,28 @@
+{
+ "H1": {
+  "criterion": "방향성 Hits@1 ≥ TransO+5%p & p<0.05",
+  "delta_hits1_pp": 8.28,
+  "bootstrap": {
+   "delta": 0.09157738774165043,
+   "p_value": 0.0,
+   "ci95": [
+    0.07688471003697528,
+    0.10648399109947294
+   ],
+   "n": 488
+  },
+  "passed": true
+ },
+ "H2": {
+  "criterion": "−L_hier_attn 시 계층 MRR ≥3%p 저하",
+  "drop_pp": 5.7,
+  "n_hier_test": 8,
+  "passed": true
+ },
+ "H3": {
+  "criterion": "50% 축소 ΔMRR(Ours) < 0.7×ΔMRR(TransE)",
+  "delta_ours": 0.1106,
+  "threshold": 0.1145,
+  "passed": true
+ }
+}

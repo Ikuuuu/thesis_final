@@ -1,0 +1,9 @@
+﻿model,train_fraction,MRR
+TransE,0.25,0.0943
+TransE,0.5,0.1151
+TransE,0.75,0.2397
+TransE,1.0,0.2787
+Ours,0.25,0.1357
+Ours,0.5,0.2016
+Ours,0.75,0.3278
+Ours,1.0,0.3122

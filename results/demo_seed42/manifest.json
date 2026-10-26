@@ -1,0 +1,11 @@
+{
+ "data": "data/v1.0",
+ "epochs": 150,
+ "n_jobs": 2,
+ "seeds": [
+  42
+ ],
+ "stages": [
+  "main"
+ ]
+}

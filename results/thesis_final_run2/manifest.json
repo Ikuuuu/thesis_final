@@ -1,0 +1,40 @@
+{
+  "run_name": "final_run2",
+  "date": "2026-06-12T00:20:29.922890",
+  "engine": "np_engine (NumPy)",
+  "hyperparameters": {
+    "dim": 100,
+    "epochs": 150,
+    "lr": 0.05,
+    "margin": 1.0,
+    "margin_dir": 1.0,
+    "num_neg": 8,
+    "batch_size": 1024,
+    "weight_decay": 1e-05,
+    "grad_clip": 5.0,
+    "curriculum": "lambda 0->1",
+    "ours": {
+      "alpha_type": 0.1,
+      "beta_hier": 0.5,
+      "gamma_attr": 0.5,
+      "delta_dir": 3.0,
+      "margin_dir": 2.0,
+      "dir_directional_only": true
+    }
+  },
+  "seeds_main": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "seeds_robust": [
+    42,
+    43,
+    44
+  ],
+  "n_jobs": 68,
+  "note": "final_run + 온톨로지 결합형 베이스라인 2종 추가 (TKRL 타입투영, TransC 구 포함). TransRHS 는 관계 계층(subRelationOf) 부재로 본 KG 에 적용 불가.",
+  "extension": "Ours(TransC base) : 본 연구 손실(L_dir+L_hier_attn+L_attr+L_type)을 TransC 점수 함수에 적용. 하이퍼파라미터는 Ours(TransE base)와 동일(추가 튜닝 없음). vs TransC: 전체 ΔMRR +0.068 (p<0.001) · 방향성 +0.092 (p<0.001) → 손실의 베이스 독립성 입증. Ours vs TransC (TransE base 단독): 전체/방향성 MRR 통계적 동률(p≈0.69/0.66), 계층 MRR 유의 우위(+0.101, p=0.022)."
+}

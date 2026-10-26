@@ -1,0 +1,52 @@
+{
+  "H1": {
+    "hypothesis": "H1_directionality",
+    "criterion": "방향성관계 Hits@1 >= TransO +5.0%p & paired-bootstrap p<0.05",
+    "ours_hits@1": 0.2887295081967213,
+    "transo_hits@1": 0.20594262295081966,
+    "delta_hits@1_pp": 8.27868852459016,
+    "delta_mrr_pp": 9.157738774165047,
+    "bootstrap_mrr": {
+      "delta": 0.09157738774165046,
+      "p_value": 0.0,
+      "ci95": [
+        0.07780446432002944,
+        0.10350677450255083
+      ],
+      "n": 2440
+    },
+    "passed": true
+  },
+  "H2": {
+    "hypothesis": "H2_hierarchy_adaptation",
+    "criterion": "L_hier_attn 제거 시 계층관계 MRR >= 3.0%p 저하 (5 seed 평균)",
+    "mrr_full": 0.4288946913000878,
+    "mrr_ablation": 0.37184631083942343,
+    "drop_pp": 5.704838046066435,
+    "passed": true
+  },
+  "H3": {
+    "hypothesis": "H3_robustness",
+    "criterion": "50% 축소 시 ΔMRR(Ours) < ΔMRR(TransE) × 0.7",
+    "delta_mrr_ours_50pct": 0.11057164398969171,
+    "delta_mrr_transe_50pct": 0.16361109927662326,
+    "threshold": 0.11452776949363627,
+    "passed": true,
+    "deltas": {
+      "TransE": {
+        "0.25": 0.18442349536710728,
+        "0.5": 0.16361109927662326,
+        "0.75": 0.03900210679116614
+      },
+      "Ours": {
+        "0.25": 0.17651930766907112,
+        "0.5": 0.11057164398969171,
+        "0.75": -0.01557748617548238
+      }
+    },
+    "base_mrr": {
+      "TransE": 0.2787177651606197,
+      "Ours": 0.31220449895334407
+    }
+  }
+}

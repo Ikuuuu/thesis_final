@@ -1,0 +1,35 @@
+{
+  "_comment": "국방 법령 지식그래프 OWL Lite 스키마 v1.1. OWL Lite 는 unionOf 를 지원하지 않으므로, 법령과 조문을 함께 가리키는 관계는 공통 상위 클래스 LegalResource 를 domain/range 로 사용한다.",
+  "namespace": "http://example.org/defense-law#",
+  "classes": {
+    "LegalResource":            {"parent": null,            "label": "법령 자원"},
+    "LegalDocument":            {"parent": "LegalResource", "label": "법령 문서"},
+    "Law":                      {"parent": "LegalDocument", "label": "법률"},
+    "EnforcementOrdinance":     {"parent": "LegalDocument", "label": "시행령(대통령령)"},
+    "EnforcementRule":          {"parent": "LegalDocument", "label": "시행규칙(부령)"},
+    "SpecialRegulation":        {"parent": "LegalDocument", "label": "특례규정"},
+    "AdministrativeOrder":      {"parent": "LegalDocument", "label": "행정규칙(훈령·규정)"},
+    "JointAdministrativeOrder": {"parent": "AdministrativeOrder", "label": "공동훈령"},
+    "ExternalLegalDocument":    {"parent": "LegalDocument", "label": "말뭉치 외부 법령"},
+    "TextUnit":                 {"parent": "LegalResource", "label": "조문 단위"},
+    "Article":                  {"parent": "TextUnit",      "label": "조문"},
+    "AddendumArticle":          {"parent": "TextUnit",      "label": "부칙 조문"},
+    "Agent":                    {"parent": null,            "label": "주체"},
+    "Organization":             {"parent": "Agent",         "label": "기관"}
+  },
+  "properties": {
+    "소속":     {"iri": "belongsTo",          "domain": "Article",       "range": "LegalDocument", "characteristics": ["Functional"], "inverse": "포함"},
+    "포함":     {"iri": "contains",           "domain": "LegalDocument", "range": "Article",       "characteristics": ["InverseFunctional"], "inverse": "소속"},
+    "인용":     {"iri": "cites",              "domain": "TextUnit",      "range": "LegalResource", "characteristics": []},
+    "외부인용": {"iri": "citesExternal",      "domain": "TextUnit",      "range": "ExternalLegalDocument", "characteristics": []},
+    "상위법령": {"iri": "parentLaw",          "domain": "LegalDocument", "range": "LegalDocument", "characteristics": ["Transitive"], "inverse": "하위법령"},
+    "하위법령": {"iri": "childLaw",           "domain": "LegalDocument", "range": "LegalDocument", "characteristics": ["Transitive"], "inverse": "상위법령"},
+    "위임":     {"iri": "delegates",          "domain": "LegalDocument", "range": "LegalDocument", "characteristics": [], "inverse": "위임받음"},
+    "위임받음": {"iri": "delegatedBy",        "domain": "LegalDocument", "range": "LegalDocument", "characteristics": [], "inverse": "위임"},
+    "소관기관": {"iri": "competentAuthority", "domain": "LegalDocument", "range": "Organization",  "characteristics": [], "inverse": "관할법령"},
+    "관할법령": {"iri": "governingLaw",       "domain": "Organization",  "range": "LegalDocument", "characteristics": [], "inverse": "소관기관"},
+    "발령기관": {"iri": "issuedBy",           "domain": "LegalDocument", "range": "Organization",  "characteristics": []}
+  },
+  "asymmetric_hint": ["소속", "포함", "인용", "외부인용", "상위법령", "하위법령", "위임", "위임받음"],
+  "type_relation": "type"
+}
